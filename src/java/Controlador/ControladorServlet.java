@@ -66,6 +66,9 @@ public class ControladorServlet extends HttpServlet {
                                 break;
             case "borrarProductos" : this.borrarProductos(request, response);
                                    break;
+            case "EliminarCuenta":  this.EliminarCuenta(request, response);
+                                    break;    
+                
                 
             default : response.sendRedirect("mensaje.jsp?men=No se que hacer xD");
             
@@ -221,5 +224,24 @@ public class ControladorServlet extends HttpServlet {
        }
        
    }
+   
+   public void EliminarCuenta(HttpServletRequest request, HttpServletResponse response)
+       throws ServletException , IOException{
+       
+       ManejoBase mn = new ManejoBase();
+       HttpSession sesion = request.getSession();
+       Cliente cliente = (Cliente) sesion.getAttribute("cliente");
+       
+       rpta = mn.EliminarCuenta(cliente.getID());
+       
+       if(rpta){
+           
+           response.sendRedirect("mensaje.jsp?men=No se pudo borrar tu cuenta");
+       }else{
+           sesion.invalidate();
+           response.sendRedirect("mensaje.jsp?men=Se ha borrado tu cuenta");
+       }
+   }
+   
    
 }

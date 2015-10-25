@@ -380,4 +380,20 @@
        return rpta;
    }
    
+   public synchronized boolean EliminarCuenta(int idClie){
+       
+       try{
+           Connection cn = Conexion.getConexion();
+           PreparedStatement ps;
+           ps = cn.prepareCall("call EliminarCuenta(?);");
+           ps.setInt(1, idClie);
+           rpta = ps.execute();
+           
+       }catch(SQLException e){
+           e.printStackTrace();
+       }
+       
+       return rpta;
+   }
+   
  }

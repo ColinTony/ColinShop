@@ -173,6 +173,15 @@ begin
 end;**
 delimiter ;
 
+#Procedimiento para eliminar una cuenta
+delimiter **
+create procedure EliminarCuenta(idClieP int)
+begin
+	delete from Cliente where Cliente.idClie = idClieP;
+	delete from Carro where Carro.idClie = idClieP;
+end;**
+delimiter ;
+
 
 
 SET SQL_SAFE_UPDATES=0;

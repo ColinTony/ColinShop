@@ -69,6 +69,10 @@
           <p class="text-justify h2">Nick: <%= cliente.getNick() %></p>
           <p class="text-justify h2">Password: <%= cliente.getPass() %></p>
           
+          <form method="post" action="ControladorServlet">
+              <input type="hidden" value="EliminarCuenta" name="accion">
+              <button class="btn btn-lg btn-primary btn-block"> Eliminar Cuenta </button>
+          </form>
           <a href="modificarDatos.jsp"><button class="btn btn-lg btn-primary btn-block">Modificar mis Datos</button></a>
           
       </div>
