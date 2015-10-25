@@ -24,14 +24,18 @@
       PreparedStatement ps = cn.prepareStatement("call registroCliente(?,?,?,?,?,?);");
       PreparedStatement pss = cn.prepareStatement("select nick from Cliente;");
       ResultSet rss= pss.executeQuery();
-      
-      while(rss.next()){
+      if(rss != null && rss.next()){
+          while(rss.next()){
             if(rss.getNString(1).equals(cliente.getNick())){
               this.rpta = false;
             }else{
                 this.rpta = true;
             }
-          }
+       }
+      }else{
+          rpta=true;
+      }
+      
       if(rpta == true){
           ps.setString(1, cliente.getApeP());
           ps.setString(2, cliente.getApeM());
