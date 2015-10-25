@@ -1,0 +1,110 @@
+<%-- 
+    Document   : Registro
+    Created on : 02-oct-2015, 10:24:23
+    Author     : Colin Heredia Luis Antonio
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Registrate</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+   <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Barra de Naavegacion</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.jsp">ColinShop</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Inicio</a></li>
+            <li><a href="prodPs3.jsp">Ps3</a></li>
+            <li><a href="prodXbox.jsp">Xbox</a></li>
+            <li><a href="prodPelis.jsp">Peliculas</a></li>
+            <li><a href="productos.jsp">Productos</a></li>
+          </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <%HttpSession sesion = request.getSession();%>
+                <%if(sesion.getAttribute("cliente")== null){%>
+                <li><a href="inicio.jsp">Iniciar Sesion</a></li>
+                <li><a href="Registro.jsp">Registrate</a></li>
+                <%}else{%>
+                <li><a href="carrito.jsp">Mi Carrito</a></li>
+                <li><a href="perfil.jsp">Mi Perfil</a></li>
+                <li><a href="cerrarSesion">Cerrar Sesion</a></li>
+                <%}%>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+      
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                <center><h2>Registrate</h2></center><br>
+                <form method="Post" action="ControladorServlet">
+                    
+                    <input type="hidden" name="accion" value="registrarCliente"/>
+                    
+                    <div class="input-group">
+                   
+                      <span class="input-group-addon" id="ApellidoPaterno">Paterno</span>
+                      <input type="text" class="form-control" placeholder="Apellido Paterno" id="apeP" name="apeP" required="llena este campo plox" aria-describedby="basic-addon1">
+
+                      <span class="input-group-addon" id="ApellidoMaterno"> Materno</span>
+                      <input type="text" class="form-control" placeholder="Apellido Materno" id="apeM" name="apeM" required aria-describedby="basic-addon1">
+
+                      <span class="input-group-addon" id="Nombres">Nombres</span>
+                      <input type="text" class="form-control" placeholder="Nombres" name="nombres" id="nombres" required aria-describedby="basic-addon1">
+                    
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                    
+                        <span class="input-group-addon" id="nick">Nick</span>
+                        <input type="text" class="form-control" placeholder="Nick" id="nick" name="nick" required aria-describedby="basic-addon1">
+                    
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                    
+                        <span class="input-group-addon" id="password">Contraseña</span>
+                        <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass" required  aria-describedby="basic-addon1">
+                    
+                    </div>
+                    <br>
+                    <div class="input-group">
+                     
+                        <span class="input-group-addon" id="email">Email</span>
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required aria-describedby="basic-addon1">
+                    
+                    </div>
+                    <br/>
+                    <center>
+                        <input type="submit" class="btn btn-default" value="Enviar"/>
+                        <input type="reset" class="btn btn-default" value="Borrar"/>
+                  </center>
+                  </div>
+                <div class="col-md-2"></div>
+            </div>
+                </form>
+            </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+    </body>
+</html>
